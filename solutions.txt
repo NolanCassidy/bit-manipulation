@@ -1,0 +1,89 @@
+4) Convert the following hex values to decimal assuming that they are stored as 2s
+complement integers.
+
+a. 0x000000FF
+0x  0     0     0     0     0     0     F     F
+  16^7  16^6  16^5  16^4  16^3  16^2  16^1  16^0
+    0     0     0     0     0     0     15    15
+0*16^7 + 0*16^6 + 0*16^5 + 0*16^4 + 0*16^3 +0*16^2 + 15*16^1 + 15*16^0
+= 255
+
+b. 0xFFFFFCE6
+weight of MSB is -1
+0x  F     F     F     F     F     C     E     6
+  16^7  16^6  16^5  16^4  16^3  16^2  16^1  16^0
+   -1    15    15    15    15    12    14     6
+(-1)*16^7 + 15*16^6 + 15*16^5 + 15*16^4 + 15*16^3 + 12*16^2 + 14*16^1 + 6*16^0
+= -794
+
+c. 0xFFFFFFFF
+weight of MSB is -1
+0x  F     F     F     F     F     F     F     F
+  16^7  16^6  16^5  16^4  16^3  16^2  16^1  16^0
+   -1    15    15    15    15    15    15    15
+(-1)*16^7 + 15*16^6 + 15*16^5 + 15*16^4 + 15*16^3 + 15*16^2 + 15*16^1 + 15*16^0
+= -1
+
+5) Convert the following hex values to decimal assuming that they are encoded as IEEE 754
+single-precision floating-point numbers:
+
+a. 0x80000000
+
+0x  8     0     0     0     0     0     0     0
+  16^7  16^6  16^5  16^4  16^3  16^2  16^1  16^0
+    8     0     0     0     0     0     0    0
+8*16^7 + 0*16^6 + 0*16^5 + 0*16^4 + 0*16^3 +0*16^2 + 0*16^1 + 0*16^0
+= 2147483648
+
+b. 0x41220000
+0x  4     1     2     2     0     0     0     0
+  16^7  16^6  16^5  16^4  16^3  16^2  16^1  16^0
+    4     1     2     2     0     0     0    0
+4*16^7 + 1*16^6 + 2*16^5 + 2*16^4 + 0*16^3 +0*16^2 + 0*16^1 + 0*16^0
+= 1092747264
+
+c. 0xC39D0000
+0x  C     3     9     D     0     0     0     0
+  16^7  16^6  16^5  16^4  16^3  16^2  16^1  16^0
+    12    3     9    13     0     0     0    0
+12*16^7 + 3*16^6 + 9*16^5 + 13*16^4 + 0*16^3 +0*16^2 + 0*16^1 + 0*16^0
+= 3281846272
+
+6) Convert the following decimal numbers to hex encoded as IEEE 754 single-precision
+floating-point numbers. Write your answers in your solutions document.
+
+a. 1.0
+binary = 1
+normalize = 1.0 * 2^0
+exponent = 127 
+remove hidden digit = 1.0 = .0
+sign bit = 0 = positive
+exponent = 01111111
+mantissa = 00000000000000000000000
+binary digits = 0011 1111 1000 0000 0000 0000 0000 0000 
+		 3    15   8    0    0     0    0    0
+= 0x3F800000
+
+b. 8.25
+binary = 1000.01
+normalize = 1.00001 * 2^3
+exponent = 127 + 3 = 130
+remove hidden digit = .00001
+sign bit = 0 = positive
+exponent = 10000010
+mantissa = 00001000000000000000000
+binary digits = 0100 0001 0000 0100 0000 0000 0000 0000 
+		 4    1     0    4   0     0    0    0
+= 0x41040000
+
+c. -25.125
+binary = 11001.001
+normalize = 1.1001001 * 2^4
+exponent = 127 + 4 = 131
+remove hidden digit = .1001001
+sign bit = 1 = negative
+exponent = 10000011
+mantissa = 100100100000000000000000
+binary digits = 1001 0010 0000 0000 0000 0000 0000 0000 
+		 9     2   0    0    0     0    0    0
+= 0x92000000
